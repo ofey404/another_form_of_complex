@@ -56,6 +56,12 @@ class my_complex(object):
     def __str__(self):
         return "{}*e^i*{}".format(self.r, self.t)
 
+    def i_form(self):
+        """转换成常规的复数"""
+        real = self.r * cos(self.t)
+        imag = self.r * sin(self.t)
+        return complex(real, imag)
+
 
 def mc_sqrt(mc, n):
     return my_complex(sqrt(mc.r), mc.t/2 + n*pi)
@@ -91,6 +97,10 @@ def test_my_complex():
     for n in range(-2, 2):
         print('sqrt(b) = {} \n when n = {} \n'.format(mcs_b(n), n))
     print('b={}'.format(b))
+    print("\n")
+    
+    print("the x+jy form of a = {}".format(a.i_form()))
+
 
 
 def g(z):
@@ -106,7 +116,9 @@ def main():
       在r属于[0, inf], theta属于[-inf, inf]上
       或者说取r，theta为广义坐标
       此时的g是连续的，用画图来说明这一点。
+      绘图参考了matplotlib中文手册：https://www.matplotlib.org.cn/gallery/mplot3d/voxels_torus.html
     """
+
 
 
 
